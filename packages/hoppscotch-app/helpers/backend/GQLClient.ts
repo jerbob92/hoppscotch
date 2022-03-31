@@ -42,10 +42,7 @@ import {
   waitProbableLoginToConfirm,
 } from "~/helpers/fb/auth"
 
-const BACKEND_GQL_URL =
-  process.env.context === "production"
-    ? "https://api.hoppscotch.io/graphql"
-    : "https://api.hoppscotch.io/graphql"
+const BACKEND_GQL_URL = process.env.API_URL
 
 const storage = makeDefaultStorage({
   idbName: "hoppcache-v1",
@@ -53,9 +50,7 @@ const storage = makeDefaultStorage({
 })
 
 const subscriptionClient = new SubscriptionClient(
-  process.env.context === "production"
-    ? "wss://api.hoppscotch.io/graphql"
-    : "wss://api.hoppscotch.io/graphql",
+  process.env.API_WS_URL as string,
   {
     reconnect: true,
     connectionParams: () => {

@@ -41,17 +41,11 @@ const authLink = setContext((_, { headers }) => {
 })
 
 const httpLink = new HttpLink({
-  uri:
-    process.env.CONTEXT === "production"
-      ? "https://api.hoppscotch.io/graphql"
-      : "https://api.hoppscotch.io/graphql",
+  uri: process.env.API_URL,
 })
 
 const wsLink = new WebSocketLink({
-  uri:
-    process.env.CONTEXT === "production"
-      ? "wss://api.hoppscotch.io/graphql"
-      : "wss://api.hoppscotch.io/graphql",
+  uri: process.env.API_WS_URL as string,
   options: {
     reconnect: true,
     lazy: true,
