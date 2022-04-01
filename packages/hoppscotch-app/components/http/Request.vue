@@ -425,6 +425,7 @@ const copyRequest = async () => {
 }
 
 const copyShareLink = (shareLink: string) => {
+  const link = `${process.env.SHORTCODE_BASE_URL}/r${shareLink}`
   if (navigator.share) {
     const time = new Date().toLocaleTimeString()
     const date = new Date().toLocaleDateString()
@@ -432,13 +433,13 @@ const copyShareLink = (shareLink: string) => {
       .share({
         title: "Hoppscotch",
         text: `Hoppscotch • Open source API development ecosystem at ${time} on ${date}`,
-        url: `https://hopp.sh/r${shareLink}`,
+        url: link,
       })
       .then(() => {})
       .catch(() => {})
   } else {
     copyLinkIcon.value = "check"
-    copyToClipboard(`https://hopp.sh/r${shareLink}`)
+    copyToClipboard(link)
     toast.success(`${t("state.copied_to_clipboard")}`)
     setTimeout(() => (copyLinkIcon.value = "copy"), 2000)
   }
