@@ -1,5 +1,6 @@
 overwrite: true
-schema: http://127.0.0.1:8989/graphql
+schema:
+  - ${API_URL}
 generates:
   helpers/backend/graphql.ts:
     documents: "**/*.graphql"
