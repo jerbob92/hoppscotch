@@ -6,7 +6,7 @@
     @close="$emit('hide-modal')"
   >
     <template #body>
-      <div class="flex transition flex-col border-b border-dividerLight">
+      <div class="flex flex-col border-b transition border-dividerLight">
         <input
           id="command"
           v-model="search"
@@ -47,7 +47,7 @@
       />
       <div
         v-else
-        class="flex flex-col flex-1 space-y-4 overflow-auto divide-y divide-dividerLight hide-scrollbar"
+        class="flex flex-col flex-1 overflow-auto space-y-4 divide-y divide-dividerLight hide-scrollbar"
       >
         <div
           v-for="(map, mapIndex) in mappings"
@@ -107,7 +107,7 @@ const shortcutsItems = computed(() =>
   )
 )
 
-const { bindArrowKeysListerners, unbindArrowKeysListerners, selectedEntry } =
+const { bindArrowKeysListeners, unbindArrowKeysListeners, selectedEntry } =
   useArrowKeysNavigation(shortcutsItems, {
     onEnter: runAction,
   })
@@ -115,8 +115,8 @@ const { bindArrowKeysListerners, unbindArrowKeysListerners, selectedEntry } =
 watch(
   () => props.show,
   (show) => {
-    if (show) bindArrowKeysListerners()
-    else unbindArrowKeysListerners()
+    if (show) bindArrowKeysListeners()
+    else unbindArrowKeysListeners()
   }
 )
 </script>

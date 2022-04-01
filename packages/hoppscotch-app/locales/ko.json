@@ -15,10 +15,11 @@
     "go_back": "돌아가기",
     "label": "이름",
     "learn_more": "더 알아보기",
-    "more": "더보기",
     "less": "Less",
+    "more": "더보기",
     "new": "추가",
     "no": "아니요",
+    "paste": "Paste",
     "prettify": "예쁘게",
     "remove": "제거",
     "restore": "복원",
@@ -74,6 +75,7 @@
     "continue_with_email": "이메일로 계속",
     "continue_with_github": "GitHub 계속하기",
     "continue_with_google": "Google로 계속하기",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "이메일",
     "logged_out": "로그아웃",
     "login": "로그인",
@@ -102,6 +104,7 @@
     "invalid_name": "모음집의 올바른 이름을 입력하세요.",
     "my_collections": "내 모음집",
     "name": "내 새 모음집",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "새 모음집",
     "renamed": "모음집 이름이 변경됨",
     "request_in_use": "Request in use",
@@ -158,13 +161,19 @@
     "tests": "이 요청에 대한 테스트가 없습니다"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "새로운 환경 만들기",
+    "deleted": "Environment deletion",
     "edit": "환경 편집",
     "invalid_name": "환경에 대한 올바른 이름을 입력하세요.",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "새로운 환경",
     "no_environment": "환경 없음",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "환경 선택",
     "title": "환경",
+    "updated": "Environment updation",
     "variable_list": "변수 목록"
   },
   "error": {
@@ -174,6 +183,7 @@
     "empty_req_name": "빈 요청 이름",
     "f12_details": "(자세한 내용은 F12)",
     "gql_prettify_invalid_query": "잘못된 쿼리를 예쁘게 만들 수 없습니다. 쿼리 구문 오류를 해결하고 다시 시도하세요.",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +192,21 @@
     "network_fail": "요청을 보낼 수 없습니다",
     "no_duration": "기간 없음",
     "script_fail": "사전 요청 스크립트를 실행할 수 없습니다.",
-    "something_went_wrong": "문제가 발생했습니다."
+    "something_went_wrong": "문제가 발생했습니다.",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "JSON으로 내보내기",
     "create_secret_gist": "Secret gist 만들기",
     "gist_created": "생성된 요지",
-    "require_github": "GitHub에 로그인하여 secret gist 만들기"
+    "require_github": "GitHub에 로그인하여 secret gist 만들기",
+    "title": "Export"
   },
   "folder": {
     "created": "폴더 생성됨",
     "edit": "폴더 수정",
     "invalid_name": "폴더 이름을 입력하세요.",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "새 폴더",
     "renamed": "폴더 이름이 변경됨"
   },
@@ -203,7 +216,6 @@
     "subscriptions": "구독"
   },
   "header": {
-    "account": "계정",
     "install_pwa": "앱을 설치",
     "login": "로그인",
     "save_workspace": "내 작업 공간 저장"
@@ -217,6 +229,7 @@
     "post_request_tests": "테스트 스크립트는 JavaScript로 작성되었으며 응답을 받은 후 실행됩니다.",
     "pre_request_script": "사전 요청 스크립트는 JavaScript로 작성되며 요청이 전송되기 전에 실행됩니다.",
     "script_fail": "사전 요청 스크립트에 결함이 있는 것 같습니다. 아래 오류를 확인하고 그에 따라 스크립트를 수정하십시오.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "디버깅을 자동화하는 테스트 스크립트를 작성하십시오."
   },
   "hide": {
@@ -232,6 +245,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "내 모음집에서 가져오기",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +254,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "요점 URL 입력",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "가저오기"
@@ -316,6 +329,7 @@
     "name": "요청 이름",
     "parameter_list": "쿼리 매개변수",
     "parameters": "매개변수",
+    "path": "경로",
     "payload": "페이로드",
     "query": "질의",
     "raw_body": "원시 요청 본문",
@@ -336,6 +350,7 @@
     "html": "HTML",
     "image": "영상",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "HTML 미리보기",
     "raw": "Raw",
     "size": "크기",
@@ -426,7 +441,6 @@
       "head_method": "HEAD 메소드 선택",
       "method": "메소드",
       "next_method": "다음 메소드 선택",
-      "path": "경로",
       "post_method": "POST 메소드 선택",
       "previous_method": "이전 메소드 선택",
       "put_method": "PUT 메소드 선택",
@@ -477,7 +491,7 @@
     "download_started": "다운로드 시작됨",
     "enabled": "활성화됨",
     "file_imported": "가져온 파일",
-    "finished_in": "{duration}ms 후에 완료예정",
+    "finished_in": "{duration} ms 후에 완료예정",
     "history_deleted": "기록 삭제됨",
     "linewrap": "랩 라인",
     "loading": "로드 중...",
@@ -555,6 +569,7 @@
     "new_name": "내 새 팀",
     "no_access": "이 모음집에 대한 수정 권한이 없습니다.",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "권한",

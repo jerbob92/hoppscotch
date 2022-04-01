@@ -10,7 +10,7 @@
       @contextmenu.prevent="options.tippy().show()"
     >
       <span
-        class="cursor-pointer flex px-2 w-16 items-center justify-center truncate"
+        class="flex items-center justify-center w-16 px-2 truncate cursor-pointer"
         :class="getRequestLabelColor(request.method)"
         @click="!doc ? selectRequest() : {}"
       >
@@ -25,7 +25,7 @@
         </span>
       </span>
       <span
-        class="cursor-pointer flex flex-1 min-w-0 py-2 pr-2 transition items-center group-hover:text-secondaryDark"
+        class="flex items-center flex-1 min-w-0 py-2 pr-2 cursor-pointer transition group-hover:text-secondaryDark"
         @click="!doc ? selectRequest() : {}"
       >
         <span class="truncate" :class="{ 'text-accent': isSelected }">
@@ -43,7 +43,7 @@
           :title="`${$t('collection.request_in_use')}`"
         >
           <span
-            class="absolute animate-ping inline-flex flex-shrink-0 h-full w-full rounded-full bg-green-500 opacity-75"
+            class="absolute inline-flex flex-shrink-0 w-full h-full bg-green-500 rounded-full opacity-75 animate-ping"
           >
           </span>
           <span
@@ -80,6 +80,7 @@
               ref="tippyActions"
               class="flex flex-col focus:outline-none"
               tabindex="0"
+              role="menu"
               @keyup.e="edit.$el.click()"
               @keyup.d="duplicate.$el.click()"
               @keyup.delete="deleteAction.$el.click()"

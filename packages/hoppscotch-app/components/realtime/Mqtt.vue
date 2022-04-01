@@ -1,79 +1,57 @@
 <template>
-  <Splitpanes
-    class="smart-splitter"
-    :rtl="SIDEBAR_ON_LEFT && windowInnerWidth.x.value >= 768"
-    :class="{
-      '!flex-row-reverse': SIDEBAR_ON_LEFT && windowInnerWidth.x.value >= 768,
-    }"
-    :horizontal="!(windowInnerWidth.x.value >= 768)"
-  >
-    <Pane size="75" min-size="65" class="hide-scrollbar !overflow-auto">
-      <Splitpanes class="smart-splitter" :horizontal="COLUMN_LAYOUT">
-        <Pane
-          :size="COLUMN_LAYOUT ? 45 : 50"
-          class="hide-scrollbar !overflow-auto"
-        >
-          <div class="sticky top-0 z-10 flex flex-col p-4 space-y-4 bg-primary">
-            <div class="inline-flex flex-1 space-x-2">
-              <input
-                id="mqtt-url"
-                v-model="url"
-                type="url"
-                autocomplete="off"
-                spellcheck="false"
-                class="w-full px-4 py-2 border rounded bg-primaryLight border-divider text-secondaryDark hover:border-dividerDark focus-visible:bg-transparent focus-visible:border-dividerDark"
-                :placeholder="$t('mqtt.url')"
-                :disabled="connectionState"
-                @keyup.enter="validUrl ? toggleConnection() : null"
-              />
-              <ButtonPrimary
-                id="connect"
-                :disabled="!validUrl"
-                class="w-32"
-                :label="
-                  connectionState
-                    ? $t('action.disconnect')
-                    : $t('action.connect')
-                "
-                :loading="connectingState"
-                @click.native="toggleConnection"
-              />
-            </div>
-            <div class="flex space-x-4">
-              <input
-                id="mqtt-username"
-                v-model="username"
-                type="text"
-                spellcheck="false"
-                class="input"
-                :placeholder="$t('authorization.username')"
-              />
-              <input
-                id="mqtt-password"
-                v-model="password"
-                type="password"
-                spellcheck="false"
-                class="input"
-                :placeholder="$t('authorization.password')"
-              />
-            </div>
-          </div>
-        </Pane>
-        <Pane
-          :size="COLUMN_LAYOUT ? 65 : 50"
-          class="hide-scrollbar !overflow-auto"
-        >
-          <RealtimeLog :title="$t('mqtt.log')" :log="log" />
-        </Pane>
-      </Splitpanes>
-    </Pane>
-    <Pane
-      v-if="SIDEBAR"
-      size="25"
-      min-size="20"
-      class="hide-scrollbar !overflow-auto"
-    >
-      <div class="flex flex-col flex-1 p-4">
+  <AppPaneLayout>
+    <template #primary>
+      <div
+        class="sticky top-0 z-10 flex flex-shrink-0 p-4 overflow-x-auto space-x-2 bg-primary hide-scrollbar"
+      >
+        <div class="inline-flex flex-1 space-x-2">
+          <input
+            id="mqtt-url"
+            v-model="url"
+            type="url"
+            autocomplete="off"
+            spellcheck="false"
+            class="w-full px-4 py-2 border rounded bg-primaryLight border-divider text-secondaryDark"
+            :placeholder="$t('mqtt.url')"
+            :disabled="connectionState"
+            @keyup.enter="validUrl ? toggleConnection() : null"
+          />
+          <ButtonPrimary
+            id="connect"
+            :disabled="!validUrl"
+            class="w-32"
+            :label="
+              connectionState ? $t('action.disconnect') : $t('action.connect')
+            "
+            :loading="connectingState"
+            @click.native="toggleConnection"
+          />
+        </div>
+        <div class="flex space-x-4">
+          <input
+            id="mqtt-username"
+            v-model="username"
+            type="text"
+            spellcheck="false"
+            class="input"
+            :placeholder="$t('authorization.username')"
+          />
+          <input
+            id="mqtt-password"
+            v-model="password"
+            type="password"
+            spellcheck="false"
+            class="input"
+            :placeholder="$t('authorization.password')"
+          />
+        </div>
+      </div>
+    </template>
+    <template #secondary>
+      <RealtimeLog :title="$t('mqtt.log')" :log="log" />
+    </template>
+    <template #sidebar>
+      <div class="flex items-center justify-between p-4">
         <label for="pub_topic" class="font-semibold text-secondaryLight">
           {{ $t("mqtt.topic") }}
         </label>
@@ -89,7 +67,7 @@
           spellcheck="false"
         />
       </div>
-      <div class="flex items-center justify-between flex-1 p-4">
+      <div class="flex items-center justify-between p-4">
         <label for="mqtt-message" class="font-semibold text-secondaryLight">
           {{ $t("mqtt.communication") }}
         </label>
@@ -112,7 +90,9 @@
           @click.native="publish"
         />
       </div>
-      <div class="flex flex-col flex-1 p-4 mt-4 border-t border-dividerLight">
+      <div
+        class="flex items-center justify-between p-4 mt-4 border-t border-dividerLight"
+      >
         <label for="sub_topic" class="font-semibold text-secondaryLight">
           {{ $t("mqtt.topic") }}
         </label>
@@ -138,19 +118,15 @@
           @click.native="toggleSubscription"
         />
       </div>
-    </Pane>
-  </Splitpanes>
+    </template>
+  </AppPaneLayout>
 </template>
 
 <script>
 import { defineComponent } from "@nuxtjs/composition-api"
-import { Splitpanes, Pane } from "splitpanes"
-import "splitpanes/dist/splitpanes.css"
 import Paho from "paho-mqtt"
 import debounce from "lodash/debounce"
 import { logHoppRequestRunToAnalytics } from "~/helpers/fb/analytics"
-import { useSetting } from "~/newstore/settings"
-import useWindowSize from "~/helpers/utils/useWindowSize"
 import {
   MQTTEndpoint$,
   setMQTTEndpoint,
@@ -169,13 +145,8 @@ import {
 import { useStream } from "~/helpers/utils/composables"
 
 export default defineComponent({
-  components: { Splitpanes, Pane },
   setup() {
     return {
-      windowInnerWidth: useWindowSize(),
-      SIDEBAR: useSetting("SIDEBAR"),
-      COLUMN_LAYOUT: useSetting("COLUMN_LAYOUT"),
-      SIDEBAR_ON_LEFT: useSetting("SIDEBAR_ON_LEFT"),
       url: useStream(MQTTEndpoint$, "", setMQTTEndpoint),
       connectionState: useStream(
         MQTTConnectionState$,

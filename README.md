@@ -34,10 +34,17 @@
   </p>
   <br />
   <p>
-    <a href="https://hoppscotch.io">
+    <a href="https://hoppscotch.io/#gh-light-mode-only" target="_blank">
       <img
-        src="https://raw.githubusercontent.com/hoppscotch/hoppscotch/main/packages/hoppscotch-app/static/banner.png"
-        alt="Screenshot"
+        src="./packages/hoppscotch-app/static/images/banner-light.png"
+        alt="Hoppscotch"
+        width="100%"
+      />
+    </a>
+    <a href="https://hoppscotch.io/#gh-dark-mode-only" target="_blank">
+      <img
+        src="./packages/hoppscotch-app/static/images/banner-dark.png"
+        alt="Hoppscotch"
         width="100%"
       />
     </a>
@@ -47,28 +54,6 @@
 #### **Support**
 
 [![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://hoppscotch.io/discord) [![Chat on Telegram](https://img.shields.io/badge/chat-Telegram-2CA5E0?logo=telegram)](https://hoppscotch.io/telegram) [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/hoppscotch/hoppscotch/discussions)
-
-<details open>
-  <summary><b>Table of contents</b></summary>
-
----
-
-- [Features](#features)
-- [Demo](#demo)
-- [Usage](#usage)
-- [Built with](#built-with)
-- [Developing](#developing)
-- [Docker](#docker)
-- [Releasing](#releasing)
-- [Contributing](#contributing)
-- [Continuous Integration](#continuous-integration)
-- [Changelog](#changelog)
-- [Authors](#authors)
-- [License](#license)
-
----
-
-</details>
 
 ### **Features**
 
@@ -219,6 +204,7 @@ _Add-ons are developed and maintained under **[Hoppscotch Organization](https://
 
 - GitHub
 - Google
+- Microsoft
 - Email
 
 **Synchronize your data**
@@ -233,7 +219,8 @@ _Add-ons are developed and maintained under **[Hoppscotch Organization](https://
 - Check the status code as an integer
 - Filter response headers
 - Parse the response data
-- Any JavaScript functions
+- Set environment variables
+- Write JavaScript code
 
 🌱 **Environments** : Environment variables allow you to store and reuse values in your requests and scripts.
 
@@ -267,7 +254,7 @@ _Add-ons are developed and maintained under **[Hoppscotch Organization](https://
 
 - Entries are separated by newline
 - Keys and values are separated by `:`
-- Prepend `//` to any row you want to add but keep disabled
+- Prepend `#` to any row you want to add but keep disabled
 
 **For more features, please read our [documentation](https://docs.hoppscotch.io).**
 
@@ -278,7 +265,7 @@ _Add-ons are developed and maintained under **[Hoppscotch Organization](https://
 ## **Usage**
 
 1. Provide your API endpoint in the URL field
-2. CLick "Send" to simulate the request
+2. Click "Send" to simulate the request
 3. View the response
 
 ## **Built with**

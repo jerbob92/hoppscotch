@@ -1,5 +1,7 @@
 <template>
-  <div class="sticky top-0 z-10 flex p-4 bg-primary">
+  <div
+    class="sticky top-0 z-10 flex flex-shrink-0 p-4 overflow-x-auto space-x-2 bg-primary hide-scrollbar"
+  >
     <div class="inline-flex flex-1 space-x-2">
       <input
         id="url"
@@ -7,7 +9,7 @@
         type="url"
         autocomplete="off"
         spellcheck="false"
-        class="w-full px-4 py-2 border rounded bg-primaryLight border-divider text-secondaryDark hover:border-dividerDark focus-visible:bg-transparent focus-visible:border-dividerDark"
+        class="w-full px-4 py-2 border rounded bg-primaryLight border-divider text-secondaryDark"
         :placeholder="`${t('request.url')}`"
         :disabled="connected"
         @keyup.enter="onConnectClick"

@@ -15,10 +15,11 @@
     "go_back": "Go back",
     "label": "Label",
     "learn_more": "Learn more",
-    "more": "More",
     "less": "Less",
+    "more": "More",
     "new": "New",
     "no": "No",
+    "paste": "Paste",
     "prettify": "Prettify",
     "remove": "Remove",
     "restore": "Restore",
@@ -43,7 +44,11 @@
     "chat_with_us": "Chat with us",
     "contact_us": "Contact us",
     "copy": "Copy",
+    "copy_user_id": "Copy User Auth Token",
+    "discord": "Discord",
     "documentation": "Documentation",
+    "developer_option": "Developer options",
+    "developer_option_description": "Developer tools which helps in development and maintenance of Hoppscotch.",
     "github": "GitHub",
     "help": "Help & feedback",
     "home": "Home",
@@ -54,6 +59,7 @@
     "keyboard_shortcuts": "Keyboard shortcuts",
     "name": "Hoppscotch",
     "new_version_found": "New version found. Refresh to update.",
+    "options": "Options",
     "proxy_privacy_policy": "Proxy privacy policy",
     "reload": "Reload",
     "search": "Search",
@@ -61,6 +67,7 @@
     "shortcuts": "Shortcuts",
     "spotlight": "Spotlight",
     "status": "Status",
+    "status_description": "Check the status of the website",
     "terms_and_privacy": "Terms and privacy",
     "twitter": "Twitter",
     "type_a_command_search": "Type a command or search…",
@@ -74,6 +81,7 @@
     "continue_with_email": "Continue with Email",
     "continue_with_github": "Continue with GitHub",
     "continue_with_google": "Continue with Google",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "Email",
     "logged_out": "Logged out",
     "login": "Login",
@@ -102,6 +110,7 @@
     "invalid_name": "Please provide a name for the collection",
     "my_collections": "My Collections",
     "name": "My New Collection",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "New Collection",
     "renamed": "Collection renamed",
     "request_in_use": "Request in use",
@@ -158,13 +167,19 @@
     "tests": "There are no tests for this request"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "Create new environment",
+    "deleted": "Environment deletion",
     "edit": "Edit Environment",
     "invalid_name": "Please provide a name for the environment",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "New Environment",
     "no_environment": "No environment",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "Select environment",
     "title": "Environments",
+    "updated": "Environment updation",
     "variable_list": "Variable List"
   },
   "error": {
@@ -174,6 +189,7 @@
     "empty_req_name": "Empty Request Name",
     "f12_details": "(F12 for details)",
     "gql_prettify_invalid_query": "Couldn't prettify an invalid query, solve query syntax errors and try again",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +198,21 @@
     "network_fail": "Could not send request",
     "no_duration": "No duration",
     "script_fail": "Could not execute pre-request script",
-    "something_went_wrong": "Something went wrong"
+    "something_went_wrong": "Something went wrong",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "Export as JSON",
     "create_secret_gist": "Create secret Gist",
     "gist_created": "Gist created",
-    "require_github": "Login with GitHub to create secret gist"
+    "require_github": "Login with GitHub to create secret gist",
+    "title": "Export"
   },
   "folder": {
     "created": "Folder created",
     "edit": "Edit Folder",
     "invalid_name": "Please provide a name for the folder",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "New Folder",
     "renamed": "Folder renamed"
   },
@@ -203,7 +222,6 @@
     "subscriptions": "Subscriptions"
   },
   "header": {
-    "account": "Account",
     "install_pwa": "Install app",
     "login": "Login",
     "save_workspace": "Save My Workspace"
@@ -217,12 +235,14 @@
     "post_request_tests": "Test scripts are written in JavaScript, and are run after the response is received.",
     "pre_request_script": "Pre-request scripts are written in JavaScript, and are run before the request is sent.",
     "script_fail": "It seems there is a glitch in the pre-request script. Check the error below and fix the script accordingly.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "Write a test script to automate debugging."
   },
   "hide": {
     "more": "Hide more",
     "preview": "Hide Preview",
-    "sidebar": "Collapse sidebar"
+    "sidebar": "Collapse sidebar",
+    "collection": "Collapse Collection Panel"
   },
   "import": {
     "collections": "Import collections",
@@ -232,6 +252,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "Import from My Collections",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +261,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "Enter Gist URL",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "Import"
@@ -248,7 +268,10 @@
   "layout": {
     "column": "Vertical layout",
     "row": "Horizontal layout",
-    "zen_mode": "Zen mode"
+    "zen_mode": "Zen mode",
+    "collapse_sidebar": "Collapse or Expand the sidebar",
+    "collapse_collection": "Collapse or Expand Collections",
+    "name": "Layout"
   },
   "modal": {
     "collections": "Collections",
@@ -316,6 +339,7 @@
     "name": "Request name",
     "parameter_list": "Query Parameters",
     "parameters": "Parameters",
+    "path": "Path",
     "payload": "Payload",
     "query": "Query",
     "raw_body": "Raw Request Body",
@@ -325,10 +349,14 @@
     "save_as": "Save as",
     "saved": "Request saved",
     "share": "Share",
+    "share_description": "Share Hoppscotch with your friends",
     "title": "Request",
     "type": "Request type",
     "url": "URL",
-    "variables": "Variables"
+    "variables": "Variables",
+    "override": "Override",
+    "override_help": "Set <xmp>Content-Type</xmp> in Headers",
+    "overriden": "Overridden"
   },
   "response": {
     "body": "Response Body",
@@ -336,6 +364,7 @@
     "html": "HTML",
     "image": "Image",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "Preview HTML",
     "raw": "Raw",
     "size": "Size",
@@ -367,6 +396,7 @@
     "font_size_large": "Large",
     "font_size_medium": "Medium",
     "font_size_small": "Small",
+    "follow": "Follow Us",
     "interceptor": "Interceptor",
     "interceptor_description": "Middleware between application and APIs.",
     "language": "Language",
@@ -426,7 +456,6 @@
       "head_method": "Select HEAD method",
       "method": "Method",
       "next_method": "Select Next method",
-      "path": "Path",
       "post_method": "Select POST method",
       "previous_method": "Select Previous method",
       "put_method": "Select PUT method",
@@ -446,7 +475,8 @@
   "show": {
     "code": "Show code",
     "more": "Show more",
-    "sidebar": "Expand sidebar"
+    "sidebar": "Expand sidebar",
+    "collection": "Expand Collection Panel"
   },
   "socketio": {
     "communication": "Communication",
@@ -477,7 +507,7 @@
     "download_started": "Download started",
     "enabled": "Enabled",
     "file_imported": "File imported",
-    "finished_in": "Finished in {duration}ms",
+    "finished_in": "Finished in {duration} ms",
     "history_deleted": "History deleted",
     "linewrap": "Wrap lines",
     "loading": "Loading...",
@@ -494,7 +524,8 @@
     "shortcuts": "Browse app faster",
     "team": "Get in touch with the team",
     "title": "Support",
-    "twitter": "Follow us on Twitter"
+    "twitter": "Follow us on Twitter",
+    "github": "Follow us on Github"
   },
   "tab": {
     "authorization": "Authorization",
@@ -548,13 +579,14 @@
     "member_removed": "User removed",
     "member_role_updated": "User roles updated",
     "members": "Members",
-    "name_length_insufficient": "Team name should be atleast 6 characters long",
+    "name_length_insufficient": "Team name should be at least 6 characters long",
     "name_updated": "Team name updated",
     "new": "New Team",
     "new_created": "New team created",
     "new_name": "My New Team",
     "no_access": "You do not have edit access to these collections",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "Permissions",

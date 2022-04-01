@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col flex-1">
     <div
-      class="sticky top-0 z-10 flex items-center justify-between flex-1 pl-4 border-b bg-primary border-dividerLight"
+      class="sticky top-0 z-10 flex items-center justify-between pl-4 border-b bg-primary border-dividerLight"
     >
       <label for="log" class="py-2 font-semibold text-secondaryLight">
         {{ title }}
@@ -13,6 +13,7 @@
           v-for="(entry, index) in log"
           :key="`entry-${index}`"
           :style="{ color: entry.color }"
+          class="font-mono"
           >{{ entry.ts }}{{ source(entry.source) }}{{ entry.payload }}</span
         >
       </span>
@@ -37,7 +38,7 @@ const props = defineProps({
 })
 
 const logsRef = ref<any | null>(null)
-const BOTTOM_SCROLL_DIST_INNACURACY = 5
+const BOTTOM_SCROLL_DIST_INACCURACY = 5
 
 watch(
   () => props.log,
@@ -47,7 +48,7 @@ watch(
       logsRef.value.scrollHeight -
       logsRef.value.scrollTop -
       logsRef.value.clientHeight
-    if (distToBottom < BOTTOM_SCROLL_DIST_INNACURACY) {
+    if (distToBottom < BOTTOM_SCROLL_DIST_INACCURACY) {
       nextTick(() => (logsRef.value.scrollTop = logsRef.value.scrollHeight))
     }
   }

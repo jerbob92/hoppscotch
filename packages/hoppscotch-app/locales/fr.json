@@ -15,10 +15,11 @@
     "go_back": "Retour",
     "label": "Étiqueter",
     "learn_more": "En savoir plus",
-    "more": "Suite",
     "less": "Less",
+    "more": "Suite",
     "new": "Nouveau",
     "no": "Non",
+    "paste": "Paste",
     "prettify": "Formater",
     "remove": "Supprimer",
     "restore": "Restaurer",
@@ -74,6 +75,7 @@
     "continue_with_email": "Continuer avec l'e-mail",
     "continue_with_github": "Continuer avec GitHub",
     "continue_with_google": "Continuer avec Google",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "E-mail",
     "logged_out": "Déconnecté",
     "login": "Connexion",
@@ -102,6 +104,7 @@
     "invalid_name": "Veuillez fournir un nom valide pour la collection",
     "my_collections": "Mes collections",
     "name": "Ma nouvelle collection",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "Nouvelle collection",
     "renamed": "Collection renommée",
     "request_in_use": "Request in use",
@@ -158,13 +161,19 @@
     "tests": "Il n'y a pas de tests pour cette requête"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "Créer un nouvel environnement",
+    "deleted": "Environment deletion",
     "edit": "Modifier l'environnement",
     "invalid_name": "Veuillez fournir un nom valide pour l'environnement",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "Nouvel environnement",
     "no_environment": "Pas d'environnement",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "Sélectionnez l'environnement",
     "title": "Environnements",
+    "updated": "Environment updation",
     "variable_list": "Liste des variables"
   },
   "error": {
@@ -174,6 +183,7 @@
     "empty_req_name": "Nom de la requête vide",
     "f12_details": "(F12 pour les détails)",
     "gql_prettify_invalid_query": "Impossible de formater une requête non valide, résolvez les erreurs de syntaxe de la requête et réessayer",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +192,21 @@
     "network_fail": "Impossible d'envoyer la requête",
     "no_duration": "Pas de durée",
     "script_fail": "Impossible d&#39;exécuter le script de pré-requête",
-    "something_went_wrong": "Quelque chose s'est mal passé"
+    "something_went_wrong": "Quelque chose s'est mal passé",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "Exporter au format JSON",
     "create_secret_gist": "Créer un Gist secret",
     "gist_created": "Gist créé",
-    "require_github": "Connectez-vous avec GitHub pour créer un Gist secret"
+    "require_github": "Connectez-vous avec GitHub pour créer un Gist secret",
+    "title": "Export"
   },
   "folder": {
     "created": "Dossier créé",
     "edit": "Modifier le dossier",
     "invalid_name": "Veuillez fournir un nom pour le dossier",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "Nouveau dossier",
     "renamed": "Dossier renommé"
   },
@@ -203,7 +216,6 @@
     "subscriptions": "Abonnements"
   },
   "header": {
-    "account": "Compte",
     "install_pwa": "Installer l'application",
     "login": "Connexion",
     "save_workspace": "Enregistrer mon espace de travail"
@@ -217,6 +229,7 @@
     "post_request_tests": "Les scripts de test sont écrits en JavaScript et sont exécutés après réception de la réponse.",
     "pre_request_script": "Les scripts de pré-requête sont écrits en JavaScript et sont exécutés avant l'envoi de la requête.",
     "script_fail": "Il semble qu&#39;il y ait un problème dans le script de pré-requête. Vérifiez l&#39;erreur ci-dessous et corrigez le script en conséquence.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "Ecrivez un script de test pour automatiser le débogage."
   },
   "hide": {
@@ -232,6 +245,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "Importer depuis Mes collections",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +254,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "Entrez l'URL principale",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "Importer"
@@ -316,6 +329,7 @@
     "name": "Nom de la requête",
     "parameter_list": "Paramètres de requête",
     "parameters": "Paramètres",
+    "path": "Chemin",
     "payload": "Charge utile",
     "query": "Requête",
     "raw_body": "Corps de requête brut",
@@ -336,6 +350,7 @@
     "html": "HTML",
     "image": "Image",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "Aperçu HTML",
     "raw": "Brut",
     "size": "Taille",
@@ -426,7 +441,6 @@
       "head_method": "Sélectionnez la méthode HEAD",
       "method": "Méthode",
       "next_method": "Sélectionnez la méthode suivante",
-      "path": "Chemin",
       "post_method": "Sélectionnez la méthode POST",
       "previous_method": "Sélectionnez la méthode précédente",
       "put_method": "Sélectionnez la méthode PUT",
@@ -477,7 +491,7 @@
     "download_started": "Téléchargement commencé",
     "enabled": "Active",
     "file_imported": "Fichier importé",
-    "finished_in": "Terminé en {duration} ms",
+    "finished_in": "Terminé en {duration} ms",
     "history_deleted": "Historique supprimé",
     "linewrap": "Retour à la ligne",
     "loading": "Chargement...",
@@ -555,6 +569,7 @@
     "new_name": "Ma nouvelle équipe",
     "no_access": "Vous n'avez pas l'accès en modification à ces collections",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "Autorisations",

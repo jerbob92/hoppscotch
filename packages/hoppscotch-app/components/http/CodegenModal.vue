@@ -1,6 +1,7 @@
 <template>
   <SmartModal
     v-if="show"
+    dialog
     :title="`${t('request.generate_code')}`"
     @close="hideModal"
   >
@@ -31,7 +32,7 @@
                 :placeholder="`${t('action.search')}`"
               />
             </div>
-            <div class="flex flex-col">
+            <div class="flex flex-col" role="menu">
               <SmartItem
                 v-for="codegen in filteredCodegenDefinitions"
                 :key="codegen.name"
@@ -55,7 +56,7 @@
         </div>
         <div
           v-if="errorState"
-          class="bg-primaryLight rounded font-mono w-full py-2 px-4 text-red-400 overflow-auto whitespace-normal"
+          class="w-full px-4 py-2 overflow-auto font-mono text-red-400 whitespace-normal rounded bg-primaryLight"
         >
           {{ t("error.something_went_wrong") }}
         </div>
@@ -85,14 +86,14 @@
 <script setup lang="ts">
 import { computed, ref, watch } from "@nuxtjs/composition-api"
 import * as O from "fp-ts/Option"
-import { makeRESTRequest } from "@hoppscotch/data"
+import { Environment, makeRESTRequest } from "@hoppscotch/data"
 import { useCodemirror } from "~/helpers/editor/codemirror"
 import { copyToClipboard } from "~/helpers/utils/clipboard"
 import {
   getEffectiveRESTRequest,
   resolvesEnvsInBody,
 } from "~/helpers/utils/EffectiveURL"
-import { Environment, getAggregateEnvs } from "~/newstore/environments"
+import { getAggregateEnvs } from "~/newstore/environments"
 import { getRESTRequest } from "~/newstore/RESTSession"
 import { useI18n, useToast } from "~/helpers/utils/composables"
 import {

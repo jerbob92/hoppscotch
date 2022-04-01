@@ -15,10 +15,11 @@
     "go_back": "Întoarce-te",
     "label": "Eticheta",
     "learn_more": "Află mai multe",
-    "more": "Mai mult",
     "less": "Less",
+    "more": "Mai mult",
     "new": "Nou",
     "no": "Nu",
+    "paste": "Paste",
     "prettify": "Dăruiește",
     "remove": "Elimina",
     "restore": "Restabili",
@@ -74,6 +75,7 @@
     "continue_with_email": "Continuați cu e-mailul",
     "continue_with_github": "Continuați cu GitHub",
     "continue_with_google": "Continuați cu Google",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "E-mail",
     "logged_out": "Delogat",
     "login": "Autentificare",
@@ -102,6 +104,7 @@
     "invalid_name": "Vă rugăm să furnizați un nume valid pentru colecție",
     "my_collections": "Colecțiile mele",
     "name": "Noua mea colecție",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "Colecție nouă",
     "renamed": "Colecția redenumită",
     "request_in_use": "Request in use",
@@ -158,13 +161,19 @@
     "tests": "Nu există teste pentru această solicitare"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "Creați un mediu nou",
+    "deleted": "Environment deletion",
     "edit": "Editați mediul",
     "invalid_name": "Vă rugăm să furnizați un nume valid pentru mediu",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "Noul mediu",
     "no_environment": "Fără mediu",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "Selectați mediul",
     "title": "Medii",
+    "updated": "Environment updation",
     "variable_list": "Lista variabilelor"
   },
   "error": {
@@ -174,6 +183,7 @@
     "empty_req_name": "Nume cerere goală",
     "f12_details": "(F12 pentru detalii)",
     "gql_prettify_invalid_query": "Nu am putut preta o interogare nevalidă, rezolvarea erorilor de sintaxă a interogării și încercați din nou",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +192,21 @@
     "network_fail": "Nu s-a putut trimite solicitarea",
     "no_duration": "Fără durată",
     "script_fail": "Nu s-a putut executa scriptul de pre-cerere",
-    "something_went_wrong": "Ceva n-a mers bine"
+    "something_went_wrong": "Ceva n-a mers bine",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "Exportați ca JSON",
     "create_secret_gist": "Creați secțiunea secretă",
     "gist_created": "Gist creat",
-    "require_github": "Conectați-vă cu GitHub pentru a crea o idee secretă"
+    "require_github": "Conectați-vă cu GitHub pentru a crea o idee secretă",
+    "title": "Export"
   },
   "folder": {
     "created": "Folder creat",
     "edit": "Editați folderul",
     "invalid_name": "Vă rugăm să furnizați un nume pentru dosar",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "Dosar nou",
     "renamed": "Dosar redenumit"
   },
@@ -203,7 +216,6 @@
     "subscriptions": "Abonamente"
   },
   "header": {
-    "account": "Cont",
     "install_pwa": "Instalează aplicația",
     "login": "Autentificare",
     "save_workspace": "Salvați spațiul meu de lucru"
@@ -217,6 +229,7 @@
     "post_request_tests": "Scripturile de testare sunt scrise în JavaScript și se execută după primirea răspunsului.",
     "pre_request_script": "Scripturile de cerere prealabilă sunt scrise în JavaScript și sunt rulate înainte de trimiterea cererii.",
     "script_fail": "Se pare că există o eroare în scriptul de pre-cerere. Verificați eroarea de mai jos și remediați scriptul în consecință.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "Scrieți un script de test pentru automatizarea depanării."
   },
   "hide": {
@@ -232,6 +245,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "Import din colecțiile mele",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +254,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "Introduceți adresa URL Gist",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "Import"
@@ -316,6 +329,7 @@
     "name": "Solicitați numele",
     "parameter_list": "Parametrii interogării",
     "parameters": "Parametrii",
+    "path": "cale",
     "payload": "Încărcătură utilă",
     "query": "Interogare",
     "raw_body": "Corp de solicitare brută",
@@ -336,6 +350,7 @@
     "html": "HTML",
     "image": "Imagine",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "Previzualizați HTML",
     "raw": "Brut",
     "size": "mărimea",
@@ -426,7 +441,6 @@
       "head_method": "Selectați metoda HEAD",
       "method": "Metodă",
       "next_method": "Selectați Metoda următoare",
-      "path": "cale",
       "post_method": "Selectați metoda POST",
       "previous_method": "Selectați Metoda anterioară",
       "put_method": "Selectați metoda PUT",
@@ -477,7 +491,7 @@
     "download_started": "Descărcarea a început",
     "enabled": "Activat",
     "file_imported": "Fișier importat",
-    "finished_in": "Finalizat în {durata} ms",
+    "finished_in": "Finalizat în {duration} ms",
     "history_deleted": "Istoricul a fost șters",
     "linewrap": "Înfășurați liniile",
     "loading": "Se încarcă...",
@@ -555,6 +569,7 @@
     "new_name": "Noua mea echipă",
     "no_access": "Nu aveți acces de editare la aceste colecții",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "Permisiuni",

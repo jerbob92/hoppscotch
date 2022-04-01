@@ -15,10 +15,11 @@
     "go_back": "Vrať se",
     "label": "Označení",
     "learn_more": "Další informace",
-    "more": "Více",
     "less": "Less",
+    "more": "Více",
     "new": "Nový",
     "no": "Ne",
+    "paste": "Paste",
     "prettify": "Prettify",
     "remove": "Odstranit",
     "restore": "Obnovit",
@@ -74,6 +75,7 @@
     "continue_with_email": "Pokračujte e -mailem",
     "continue_with_github": "Pokračujte na GitHubu",
     "continue_with_google": "Pokračovat s Google",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "E-mailem",
     "logged_out": "Odhlásit",
     "login": "Přihlásit se",
@@ -102,6 +104,7 @@
     "invalid_name": "Uveďte prosím platný název kolekce",
     "my_collections": "Moje sbírky",
     "name": "Moje nová kolekce",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "Nová kolekce",
     "renamed": "Sbírka přejmenována",
     "request_in_use": "Request in use",
@@ -158,13 +161,19 @@
     "tests": "Pro tento požadavek neexistují žádné testy"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "Vytvořit nové prostředí",
+    "deleted": "Environment deletion",
     "edit": "Upravit prostředí",
     "invalid_name": "Zadejte platný název prostředí",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "Nové prostředí",
     "no_environment": "Žádné prostředí",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "Vyberte prostředí",
     "title": "Prostředí",
+    "updated": "Environment updation",
     "variable_list": "Seznam proměnných"
   },
   "error": {
@@ -174,6 +183,7 @@
     "empty_req_name": "Název prázdného požadavku",
     "f12_details": "(F12 pro podrobnosti)",
     "gql_prettify_invalid_query": "Neplatný dotaz nelze předběžně upravit, vyřešit chyby syntaxe dotazu a zkusit to znovu",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +192,21 @@
     "network_fail": "Žádost nelze odeslat",
     "no_duration": "Žádné trvání",
     "script_fail": "Skript předběžného požadavku nelze spustit",
-    "something_went_wrong": "Něco se pokazilo"
+    "something_went_wrong": "Něco se pokazilo",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "Exportovat jako JSON",
     "create_secret_gist": "Vytvořte tajnou podstatu",
     "gist_created": "Podstata vytvořena",
-    "require_github": "Přihlaste se pomocí GitHub a vytvořte tajný seznam"
+    "require_github": "Přihlaste se pomocí GitHub a vytvořte tajný seznam",
+    "title": "Export"
   },
   "folder": {
     "created": "Složka vytvořena",
     "edit": "Upravit složku",
     "invalid_name": "Zadejte název složky",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "Nová složka",
     "renamed": "Složka přejmenována"
   },
@@ -203,7 +216,6 @@
     "subscriptions": "Předplatné"
   },
   "header": {
-    "account": "Účet",
     "install_pwa": "Nainstalovat aplikaci",
     "login": "Přihlásit se",
     "save_workspace": "Uložit můj pracovní prostor"
@@ -217,6 +229,7 @@
     "post_request_tests": "Testovací skripty jsou napsány v JavaScriptu a jsou spuštěny po přijetí odpovědi.",
     "pre_request_script": "Skripty před požadavkem jsou napsány v JavaScriptu a jsou spuštěny před odesláním požadavku.",
     "script_fail": "Zdá se, že ve skriptu předběžného požadavku je chyba. Zkontrolujte níže uvedenou chybu a opravte skript odpovídajícím způsobem.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "Napište testovací skript pro automatizaci ladění."
   },
   "hide": {
@@ -232,6 +245,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "Importovat z mých sbírek",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +254,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "Zadejte URL adresy",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "Import"
@@ -314,6 +327,7 @@
     "invalid_name": "Uveďte prosím název žádosti",
     "method": "Metoda",
     "name": "Vyžádejte si jméno",
+    "path": "Cesta",
     "parameter_list": "Parametry dotazu",
     "parameters": "Parametry",
     "payload": "Užitečné zatížení",
@@ -336,6 +350,7 @@
     "html": "HTML",
     "image": "obraz",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "Náhled HTML",
     "raw": "Drsný",
     "size": "Velikost",
@@ -426,7 +441,6 @@
       "head_method": "Vyberte metodu HEAD",
       "method": "Metoda",
       "next_method": "Vyberte Další metoda",
-      "path": "Cesta",
       "post_method": "Vyberte metodu POST",
       "previous_method": "Vyberte předchozí metodu",
       "put_method": "Vyberte metodu PUT",
@@ -555,6 +569,7 @@
     "new_name": "Můj nový tým",
     "no_access": "K těmto kolekcím nemáte přístup k úpravám",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "Oprávnění",

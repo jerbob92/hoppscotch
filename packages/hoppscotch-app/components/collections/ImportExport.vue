@@ -1,6 +1,7 @@
 <template>
   <SmartModal
     v-if="show"
+    dialog
     :title="`${t('modal.collections')}`"
     max-width="sm:max-w-md"
     @close="hideModal"
@@ -16,7 +17,7 @@
     </template>
     <template #body>
       <div v-if="importerType !== null" class="flex flex-col">
-        <div class="flex pb-6 flex-col px-2">
+        <div class="flex flex-col px-2 pb-6">
           <div
             v-for="(step, index) in importerSteps"
             :key="`step-${index}`"
@@ -25,7 +26,7 @@
             <div v-if="step.name === 'FILE_IMPORT'" class="space-y-4">
               <p class="flex items-center">
                 <span
-                  class="inline-flex border-4 border-primary items-center justify-center flex-shrink-0 mr-4 rounded-full text-dividerDark"
+                  class="inline-flex items-center justify-center flex-shrink-0 mr-4 border-4 rounded-full border-primary text-dividerDark"
                   :class="{
                     '!text-green-500': hasFile,
                   }"
@@ -42,7 +43,7 @@
                   ref="inputChooseFileToImportFrom"
                   name="inputChooseFileToImportFrom"
                   type="file"
-                  class="transition cursor-pointer file:transition file:cursor-pointer text-secondary hover:text-secondaryDark file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-secondary hover:file:text-secondaryDark file:bg-primaryLight hover:file:bg-primaryDark"
+                  class="cursor-pointer transition file:transition file:cursor-pointer text-secondary hover:text-secondaryDark file:mr-2 file:py-2 file:px-4 file:rounded file:border-0 file:text-secondary hover:file:text-secondaryDark file:bg-primaryLight hover:file:bg-primaryDark"
                   :accept="step.metadata.acceptedFileTypes"
                   @change="onFileChange"
                 />
@@ -51,7 +52,7 @@
             <div v-else-if="step.name === 'URL_IMPORT'" class="space-y-4">
               <p class="flex items-center">
                 <span
-                  class="inline-flex border-4 border-primary items-center justify-center flex-shrink-0 mr-4 rounded-full text-dividerDark"
+                  class="inline-flex items-center justify-center flex-shrink-0 mr-4 border-4 rounded-full border-primary text-dividerDark"
                   :class="{
                     '!text-green-500': hasGist,
                   }"
@@ -163,9 +164,9 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from "@nuxtjs/composition-api"
+import { pipe } from "fp-ts/function"
 import * as E from "fp-ts/Either"
 import { HoppRESTRequest, HoppCollection } from "@hoppscotch/data"
-import { apolloClient } from "~/helpers/apollo"
 import {
   useAxios,
   useI18n,
@@ -173,10 +174,14 @@ import {
   useToast,
 } from "~/helpers/utils/composables"
 import { currentUser$ } from "~/helpers/fb/auth"
-import * as teamUtils from "~/helpers/teams/utils"
 import { appendRESTCollections, restCollections$ } from "~/newstore/collections"
 import { RESTCollectionImporters } from "~/helpers/import-export/import/importers"
 import { StepReturnValue } from "~/helpers/import-export/steps"
+import { runGQLQuery, runMutation } from "~/helpers/backend/GQLClient"
+import {
+  ExportAsJsonDocument,
+  ImportFromJsonDocument,
+} from "~/helpers/backend/graphql"
 
 const props = defineProps<{
   show: boolean
@@ -212,11 +217,23 @@ const getJSONCollection = async () => {
   if (props.collectionsType.type === "my-collections") {
     collectionJson.value = JSON.stringify(myCollections.value, null, 2)
   } else {
-    collectionJson.value = await teamUtils.exportAsJSON(
-      apolloClient,
-      props.collectionsType.selectedTeam.id
+    collectionJson.value = pipe(
+      await runGQLQuery({
+        query: ExportAsJsonDocument,
+        variables: {
+          teamID: props.collectionsType.selectedTeam.id,
+        },
+      }),
+      E.matchW(
+        // TODO: Handle error case gracefully ?
+        () => {
+          throw new Error("Error exporting collection to JSON")
+        },
+        (x) => x.exportCollectionsToJSON
+      )
     )
   }
+
   return collectionJson.value
 }
 
@@ -284,25 +301,19 @@ const importingMyCollections = ref(false)
 const importToTeams = async (content: HoppCollection<HoppRESTRequest>) => {
   importingMyCollections.value = true
   if (props.collectionsType.type !== "team-collections") return
-  await teamUtils
-    .importFromJSON(
-      apolloClient,
-      content,
-      props.collectionsType.selectedTeam.id
-    )
-    .then((status) => {
-      if (status) {
-        emit("update-team-collections")
-      } else {
-        console.error(status)
-      }
-    })
-    .catch((e) => {
-      console.error(e)
-    })
-    .finally(() => {
-      importingMyCollections.value = false
-    })
+
+  const result = await runMutation(ImportFromJsonDocument, {
+    jsonString: JSON.stringify(content),
+    teamID: props.collectionsType.selectedTeam.id,
+  })()
+
+  if (E.isLeft(result)) {
+    console.error(result.left)
+  } else {
+    emit("update-team-collections")
+  }
+
+  importingMyCollections.value = false
 }
 
 const exportJSON = () => {

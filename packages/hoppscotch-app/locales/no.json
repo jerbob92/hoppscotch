@@ -15,10 +15,11 @@
     "go_back": "Gå tilbake",
     "label": "Merkelapp",
     "learn_more": "Lær mer",
-    "more": "Mer",
     "less": "Less",
+    "more": "Mer",
     "new": "Ny",
     "no": "Nei",
+    "paste": "Paste",
     "prettify": "Forskjønn",
     "remove": "Ta bort",
     "restore": "Gjenopprett",
@@ -74,6 +75,7 @@
     "continue_with_email": "Fortsett med e-post",
     "continue_with_github": "Fortsett med GitHub",
     "continue_with_google": "Fortsett med Google",
+    "continue_with_microsoft": "Continue with Microsoft",
     "email": "E-post",
     "logged_out": "Logget ut",
     "login": "Logg inn",
@@ -102,6 +104,7 @@
     "invalid_name": "Oppgi et gyldig navn på samlingen",
     "my_collections": "Mine samlinger",
     "name": "Min nye samling",
+    "name_length_insufficient": "Collection name should be at least 3 characters long",
     "new": "Ny kolleksjon",
     "renamed": "Samlingen ble omdøpt",
     "request_in_use": "Request in use",
@@ -158,13 +161,19 @@
     "tests": "Det er ingen tester for denne forespørselen"
   },
   "environment": {
+    "add_to_global": "Add to Global",
+    "added": "Environment addition",
     "create_new": "Skap nytt miljø",
+    "deleted": "Environment deletion",
     "edit": "Rediger miljø",
     "invalid_name": "Oppgi et gyldig navn på miljøet",
+    "nested_overflow": "nested environment variables are limited to 10 levels",
     "new": "Nytt miljø",
     "no_environment": "Ingen miljø",
+    "no_environment_description": "No environments were selected. Choose what to do with the following variables.",
     "select": "Velg miljø",
     "title": "Miljøer",
+    "updated": "Environment updation",
     "variable_list": "Variabel liste"
   },
   "error": {
@@ -174,6 +183,7 @@
     "empty_req_name": "Tom forespørselsnavn",
     "f12_details": "(F12 for detaljer)",
     "gql_prettify_invalid_query": "Kunne ikke forskjønne en ugyldig spørring, løse spørringssyntaksfeil og prøve igjen",
+    "incomplete_config_urls": "Incomplete configuration URLs",
     "incorrect_email": "Incorrect email",
     "invalid_link": "Invalid link",
     "invalid_link_description": "The link you clicked is invalid or expired.",
@@ -182,18 +192,21 @@
     "network_fail": "Kunne ikke sende forespørsel",
     "no_duration": "Ingen varighet",
     "script_fail": "Kunne ikke kjøre forhåndsforespørselsskript",
-    "something_went_wrong": "Noe gikk galt"
+    "something_went_wrong": "Noe gikk galt",
+    "test_script_fail": "Could not execute post-request script"
   },
   "export": {
     "as_json": "Eksporter som JSON",
     "create_secret_gist": "Lag hemmelig Gist",
     "gist_created": "Gist opprettet",
-    "require_github": "Logg på med GitHub for å lage en hemmelig oppgave"
+    "require_github": "Logg på med GitHub for å lage en hemmelig oppgave",
+    "title": "Export"
   },
   "folder": {
     "created": "Mappen er opprettet",
     "edit": "Rediger mappe",
     "invalid_name": "Oppgi et navn på mappen",
+    "name_length_insufficient": "Folder name should be at least 3 characters long",
     "new": "Ny mappe",
     "renamed": "Mappen ble gitt nytt navn"
   },
@@ -203,7 +216,6 @@
     "subscriptions": "Abonnementer"
   },
   "header": {
-    "account": "Regnskap",
     "install_pwa": "Installer app",
     "login": "Logg Inn",
     "save_workspace": "Lagre arbeidsområdet mitt"
@@ -217,6 +229,7 @@
     "post_request_tests": "Testskript er skrevet i JavaScript og kjøres etter at svaret er mottatt.",
     "pre_request_script": "Skript for forespørsel er skrevet i JavaScript og kjøres før forespørselen sendes.",
     "script_fail": "Det ser ut til at det er en feil i forhåndsforespørselsskriptet. Sjekk feilen nedenfor og fiks skriptet deretter.",
+    "test_script_fail": "There seems to be an error with test script. Please fix the errors and run tests again",
     "tests": "Skriv et testskript for å automatisere feilsøking."
   },
   "hide": {
@@ -232,6 +245,8 @@
     "from_gist_description": "Import from Gist URL",
     "from_insomnia": "Import from Insomnia",
     "from_insomnia_description": "Import from Insomnia collection",
+    "from_json": "Import from Hoppscotch",
+    "from_json_description": "Import from Hoppscotch collection file",
     "from_my_collections": "Importer fra Mine samlinger",
     "from_my_collections_description": "Import from My Collections file",
     "from_openapi": "Import from OpenAPI",
@@ -239,8 +254,6 @@
     "from_postman": "Import from Postman",
     "from_postman_description": "Import from Postman collection",
     "from_url": "Import from URL",
-    "from_json": "Import from Hoppscotch",
-    "from_json_description": "Import from Hoppscotch collection file",
     "gist_url": "Skriv inn Gist URL",
     "json_description": "Import collections from a Hoppscotch Collections JSON file",
     "title": "Import"
@@ -316,6 +329,7 @@
     "name": "Forespørselsnavn",
     "parameter_list": "Spørringsparametere",
     "parameters": "Parametere",
+    "path": "Sti",
     "payload": "Nyttelast",
     "query": "Spørsmål",
     "raw_body": "Raw Request Body",
@@ -336,6 +350,7 @@
     "html": "HTML",
     "image": "Bilde",
     "json": "JSON",
+    "pdf": "PDF",
     "preview_html": "Forhåndsvis HTML",
     "raw": "Rå",
     "size": "Størrelse",
@@ -426,7 +441,6 @@
       "head_method": "Velg HEAD-metode",
       "method": "Metode",
       "next_method": "Velg Neste metode",
-      "path": "Sti",
       "post_method": "Velg POST-metode",
       "previous_method": "Velg Forrige metode",
       "put_method": "Velg PUT-metode",
@@ -555,6 +569,7 @@
     "new_name": "Mitt nye lag",
     "no_access": "Du har ikke redigeringstilgang til disse samlingene",
     "no_invite_found": "Invitation not found. Contact your team owner.",
+    "not_found": "Team not found. Contact your team owner.",
     "not_valid_viewer": "You are not a valid viewer. Contact your team owner.",
     "pending_invites": "Pending invites",
     "permissions": "Tillatelser",

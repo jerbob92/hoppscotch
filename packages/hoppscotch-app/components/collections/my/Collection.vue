@@ -11,7 +11,7 @@
       @contextmenu.prevent="options.tippy().show()"
     >
       <span
-        class="cursor-pointer flex px-4 items-center justify-center"
+        class="flex items-center justify-center px-4 cursor-pointer"
         @click="toggleShowChildren()"
       >
         <SmartIcon
@@ -21,7 +21,7 @@
         />
       </span>
       <span
-        class="cursor-pointer flex flex-1 min-w-0 py-2 pr-2 transition group-hover:text-secondaryDark"
+        class="flex flex-1 min-w-0 py-2 pr-2 cursor-pointer transition group-hover:text-secondaryDark"
         @click="toggleShowChildren()"
       >
         <span class="truncate" :class="{ 'text-accent': isSelected }">
@@ -78,9 +78,11 @@
               ref="tippyActions"
               class="flex flex-col focus:outline-none"
               tabindex="0"
+              role="menu"
               @keyup.n="folderAction.$el.click()"
               @keyup.e="edit.$el.click()"
               @keyup.delete="deleteAction.$el.click()"
+              @keyup.x="exportAction.$el.click()"
               @keyup.escape="options.tippy().hide()"
             >
               <SmartItem
@@ -106,6 +108,18 @@
                 @click.native="
                   () => {
                     $emit('edit-collection')
+                    options.tippy().hide()
+                  }
+                "
+              />
+              <SmartItem
+                ref="exportAction"
+                svg="download"
+                :label="$t('export.title')"
+                :shortcut="['X']"
+                @click.native="
+                  () => {
+                    exportCollection()
                     options.tippy().hide()
                   }
                 "
@@ -177,12 +191,12 @@
             (collection.requests == undefined ||
               collection.requests.length === 0)
           "
-          class="flex flex-col text-secondaryLight p-4 items-center justify-center"
+          class="flex flex-col items-center justify-center p-4 text-secondaryLight"
         >
           <img
             :src="`/images/states/${$colorMode.value}/pack.svg`"
             loading="lazy"
-            class="flex-col object-contain object-center h-16 mb-4 w-16 inline-flex"
+            class="inline-flex flex-col object-contain object-center w-16 h-16 mb-4"
             :alt="`${$t('empty.collection')}`"
           />
           <span class="text-center">
@@ -222,6 +236,7 @@ export default defineComponent({
       folderAction: ref<any | null>(null),
       edit: ref<any | null>(null),
       deleteAction: ref<any | null>(null),
+      exportAction: ref<any | null>(null),
     }
   },
   data() {
@@ -251,6 +266,23 @@ export default defineComponent({
     },
   },
   methods: {
+    exportCollection() {
+      const collectionJSON = JSON.stringify(this.collection)
+
+      const file = new Blob([collectionJSON], { type: "application/json" })
+      const a = document.createElement("a")
+      const url = URL.createObjectURL(file)
+      a.href = url
+
+      a.download = `${this.collection.name}.json`
+      document.body.appendChild(a)
+      a.click()
+      this.$toast.success(this.$t("state.download_started").toString())
+      setTimeout(() => {
+        document.body.removeChild(a)
+        URL.revokeObjectURL(url)
+      }, 1000)
+    },
     toggleShowChildren() {
       if (this.$props.saveRequest)
         this.$emit("select", {
@@ -270,7 +302,7 @@ export default defineComponent({
         collectionID: this.collection.id,
       })
     },
-    dropEvent({ dataTransfer }) {
+    dropEvent({ dataTransfer }: any) {
       this.dragging = !this.dragging
       const folderPath = dataTransfer.getData("folderPath")
       const requestIndex = dataTransfer.getData("requestIndex")

@@ -2,7 +2,7 @@
   <div class="flex flex-col group">
     <div class="flex items-center">
       <span
-        class="flex flex-1 min-w-0 py-2 pl-4 pr-2 transition cursor-pointer group-hover:text-secondaryDark"
+        class="flex flex-1 min-w-0 py-2 pl-4 pr-2 cursor-pointer transition group-hover:text-secondaryDark"
         data-testid="restore_history_entry"
         @click="useEntry"
       >
@@ -58,6 +58,7 @@
 <script setup lang="ts">
 import { computed, ref } from "@nuxtjs/composition-api"
 import { makeGQLRequest } from "@hoppscotch/data"
+import { cloneDeep } from "lodash"
 import { setGQLSession } from "~/newstore/GQLSession"
 import { GQLHistoryEntry } from "~/newstore/history"
 
@@ -79,13 +80,16 @@ const query = computed(() =>
 
 const useEntry = () => {
   setGQLSession({
-    request: makeGQLRequest({
-      name: props.entry.request.name,
-      url: props.entry.request.url,
-      headers: props.entry.request.headers,
-      query: props.entry.request.query,
-      variables: props.entry.request.variables,
-    }),
+    request: cloneDeep(
+      makeGQLRequest({
+        name: props.entry.request.name,
+        url: props.entry.request.url,
+        headers: props.entry.request.headers,
+        query: props.entry.request.query,
+        variables: props.entry.request.variables,
+        auth: props.entry.request.auth,
+      })
+    ),
     schema: "",
     response: props.entry.response,
   })

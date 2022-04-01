@@ -7,13 +7,15 @@ import {
   FormDataKeyValue,
   HoppRESTReqBody,
   HoppRESTRequest,
+  parseTemplateString,
+  parseBodyEnvVariables,
+  parseRawKeyValueEntries,
+  Environment,
 } from "@hoppscotch/data"
-import { parseTemplateString, parseBodyEnvVariables } from "../templating"
 import { arrayFlatMap, arraySort } from "../functional/array"
 import { toFormData } from "../functional/formData"
 import { tupleToRecord } from "../functional/record"
-import { parseRawKeyValueEntries } from "../rawKeyValue"
-import { Environment, getGlobalVariables } from "~/newstore/environments"
+import { getGlobalVariables } from "~/newstore/environments"
 
 export interface EffectiveHoppRESTRequest extends HoppRESTRequest {
   /**
@@ -59,7 +61,7 @@ export const resolvesEnvsInBody = (
 
 function getFinalBodyFromRequest(
   request: HoppRESTRequest,
-  env: Environment
+  envVariables: Environment["variables"]
 ): FormData | string | null {
   if (request.body.contentType === null) {
     return null
@@ -73,7 +75,13 @@ function getFinalBodyFromRequest(
       // Filter out active
       A.filter((x) => x.active),
       // Convert to tuple
-      A.map(({ key, value }) => [key, value] as [string, string]),
+      A.map(
+        ({ key, value }) =>
+          [
+            parseTemplateString(key, envVariables),
+            parseTemplateString(value, envVariables),
+          ] as [string, string]
+      ),
       // Tuple to Record object
       tupleToRecord,
       // Stringify
@@ -98,19 +106,19 @@ function getFinalBodyFromRequest(
       arrayFlatMap((x) =>
         x.isFile
           ? x.value.map((v) => ({
-              key: parseTemplateString(x.key, env.variables),
+              key: parseTemplateString(x.key, envVariables),
               value: v as string | Blob,
             }))
           : [
               {
-                key: parseTemplateString(x.key, env.variables),
-                value: parseTemplateString(x.value, env.variables),
+                key: parseTemplateString(x.key, envVariables),
+                value: parseTemplateString(x.value, envVariables),
               },
             ]
       ),
       toFormData
     )
-  } else return parseBodyEnvVariables(request.body.body, env.variables)
+  } else return parseBodyEnvVariables(request.body.body, envVariables)
 }
 
 /**
@@ -194,8 +202,11 @@ export function getEffectiveRESTRequest(
     }
   }
 
-  const effectiveFinalBody = getFinalBodyFromRequest(request, environment)
-  if (request.body.contentType)
+  const effectiveFinalBody = getFinalBodyFromRequest(request, envVariables)
+  const contentTypeInHeader = effectiveFinalHeaders.find(
+    (x) => x.key.toLowerCase() === "content-type"
+  )
+  if (request.body.contentType && !contentTypeInHeader?.value)
     effectiveFinalHeaders.push({
       active: true,
       key: "content-type",
